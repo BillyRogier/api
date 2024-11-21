@@ -32,7 +32,7 @@ app.get('/api/todos/:id', [authJwt.verifyToken, authJwt.isExist], async (req, re
   }
 });
 
-app.post('/api/todos', [authJwt.verifyToken, authJwt.isExist, hasRole('admin')], async (req, res) => {
+app.post('/api/todos', [authJwt.verifyToken, authJwt.isExist, authJwt.hasRole('admin')], async (req, res) => {
   try {
     const newTodo = new Todo({
       title: req.body.title,
@@ -46,7 +46,7 @@ app.post('/api/todos', [authJwt.verifyToken, authJwt.isExist, hasRole('admin')],
   }
 });
 
-app.put('/api/todos/:id', [authJwt.verifyToken, authJwt.isExist, hasRole('admin')], async (req, res) => {
+app.put('/api/todos/:id', [authJwt.verifyToken, authJwt.isExist, authJwt.hasRole('admin')], async (req, res) => {
   try {
     const todo = await Todo.findById(req.params.id);
     if (!todo) {

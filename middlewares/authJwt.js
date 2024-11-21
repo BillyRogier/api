@@ -44,5 +44,6 @@ hasRole = (requiredRole) => {
 const authJwt = {
   verifyToken,
   isExist,
+  hasRole,
 };
 module.exports = authJwt;
